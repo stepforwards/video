@@ -25,10 +25,15 @@
   </head>
   <body>
   	<div class="container">
-			<div class="form-group" style="width: 309px;margin: 400px auto;">
-				<a class="btn btn-default btn-lg" style="padding: 55px;" href="#">前台</a>
-				<a class="btn btn-default btn-lg" style="padding: 55px;" href="<c:url value="/admin/indexBackstage.action"/>">后台</a>
+	  	<form action="<c:url value="/admin/login.action"/>" method="post">
+			<div class="form-group" style="width: 309px;margin: 300px auto;">
+				<div style="background-image: url(${pageContext.request.contextPath }/img/logo.png); width: 309px; height: 76px ; margin: 10px 0;"></div>
+				<input type="text" name="username" class="form-control" placeholder="Username" style="margin: 10px 0;">
+				<input type="password" name="password" class="form-control" placeholder="Password" style="margin: 10px 0;">
+				<button type="submit" class="btn btn-success" style="width: 309px;">登录</button>
 			</div>
+		</form>
+		<div style="text-align: center;">智游教育 © 豫ICP备17000832号 河南智游臻龙教育科技有限公司</div>
   	</div>
   </body>
 </html>

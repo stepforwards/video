@@ -17,6 +17,13 @@ public class AdminController {
 	@Autowired
 	AdminService as;
 	
+	
+	@RequestMapping(value="/indexBackstage.action",method=RequestMethod.GET)
+	public String indexBackstage(){
+		return "/admin/indexBackstage";
+	}
+	
+	/*admin登录*/
 	@RequestMapping(value="/login.action",method=RequestMethod.POST)
 	public String login(String username,String password,HttpSession session){
 		Admin admin = as.login(username, password);

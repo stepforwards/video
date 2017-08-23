@@ -21,6 +21,7 @@ public class CourseController {
 	@Autowired
 	SubjectService ss;
 	
+	/*课程列表*/
 	@SuppressWarnings({ "rawtypes"})
 	@RequestMapping("/courseManagementList.action")
 	public String courseManagementList(Model m,@RequestParam(defaultValue="1")String page){
