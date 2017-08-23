@@ -10,6 +10,7 @@ import com.forward.video.model.KeyVO;
 import com.forward.video.model.Speaker;
 import com.forward.video.model.SpeakerExample;
 import com.forward.video.service.SpeakerService;
+import com.forward.video.util.Page;
 
 @Service
 public class SpeakerServiceImpl implements SpeakerService {
@@ -45,8 +46,22 @@ public class SpeakerServiceImpl implements SpeakerService {
 	@Override
 	public List<Speaker> selectSpeakerByKey(KeyVO kvo) {
 		SpeakerExample example = new SpeakerExample();
-		example.createCriteria().andSpeakerNameLike(kvo.getSpeakerName()).andSpeakerJobLike(kvo.getSpeakerJob());
+		example.createCriteria().andSpeakerNameLike("%"+kvo.getSpeakerName()+"%").andSpeakerJobLike("%"+kvo.getSpeakerJob()+"%");
 		return sm.selectByExample(example);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Page loadPage(KeyVO kvo, int currentPage) {
+		SpeakerExample example = new SpeakerExample();
+		example.createCriteria().andSpeakerNameLike("%"+kvo.getSpeakerName()+"%").andSpeakerJobLike("%"+kvo.getSpeakerJob()+"%");
+		kvo.setCurrentStrip((currentPage-1)*5);
+		Page<Speaker> page = new Page<>();
+		page.setPage(currentPage);
+		page.setSize(5);
+		page.setTotal(sm.countByExample(example));
+		page.setRows(sm.selectByKeylimit(kvo));
+		return page;
 	}
 
 }

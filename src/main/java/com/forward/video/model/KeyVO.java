@@ -5,8 +5,8 @@ public class KeyVO {
 	private Integer speaker;
 	private Integer course;
 	private Integer currentStrip;
-	private String speakerName;
-	private String speakerJob;
+	private String speakerName = "";
+	private String speakerJob = "";
 	
 	
 	
@@ -14,13 +14,13 @@ public class KeyVO {
 		return speakerName;
 	}
 	public void setSpeakerName(String speakerName) {
-		this.speakerName = speakerName;
+		this.speakerName = speakerName == null ? "" : speakerName;
 	}
 	public String getSpeakerJob() {
 		return speakerJob;
 	}
 	public void setSpeakerJob(String speakerJob) {
-		this.speakerJob = speakerJob;
+		this.speakerJob = speakerJob == null ? "" : speakerJob;
 	}
 	public Integer getCurrentStrip() {
 		return currentStrip;
@@ -32,9 +32,7 @@ public class KeyVO {
 		return videoTitle;
 	}
 	public void setVideoTitle(String videoTitle) {
-		if(videoTitle != null){
-			this.videoTitle = videoTitle;
-		}
+		this.videoTitle = videoTitle == null ? "" : videoTitle;
 	}
 	public Integer getSpeaker() {
 		return speaker;

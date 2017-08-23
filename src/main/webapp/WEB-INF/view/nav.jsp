@@ -41,7 +41,7 @@
 		          <ul class="nav navbar-nav">
 		            <li class="active"><a href="<c:url value="/video/videoManagementList.action"/>">视频管理</a></li>
 		            <li><a href="<c:url value="/speaker/speakerManagementList.action"/>">主讲人管理</a></li>
-		            <li><a href="courseManagementList.html">课程管理</a></li>
+		            <li><a href="<c:url value="/course/courseManagementList.action"/>">课程管理</a></li>
 		            <li><a href="#">统计分析</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">

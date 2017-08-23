@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.forward.video.model.KeyVO;
 import com.forward.video.model.Speaker;
+import com.forward.video.util.Page;
 
 public interface SpeakerService {
 	List<Speaker> selectSpeakerAll();
@@ -17,4 +18,7 @@ public interface SpeakerService {
 	void updateSpeakerById(Speaker speaker);
 
 	List<Speaker> selectSpeakerByKey(KeyVO kvo);
+
+	@SuppressWarnings("rawtypes")
+	Page loadPage(KeyVO kvo, int page);
 }

@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.forward.video.mapper.CourseMapper" >
-  <resultMap id="BaseResultMap" type="com.forward.video.model.Course" >
+<mapper namespace="com.forward.video.mapper.SubjectMapper" >
+  <resultMap id="BaseResultMap" type="com.forward.video.model.Subject" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
-    <result column="course_descr" property="courseDescr" jdbcType="VARCHAR" />
-    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
     <result column="subject_name" property="subjectName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -69,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, course_name, course_descr, insert_time, update_time, subject_id
+    id, subject_name
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.forward.video.model.CourseExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.forward.video.model.SubjectExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from course
+    from subject
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,96 +83,56 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from course
+    from subject
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from course
+    delete from subject
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.forward.video.model.CourseExample" >
-    delete from course
+  <delete id="deleteByExample" parameterType="com.forward.video.model.SubjectExample" >
+    delete from subject
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.forward.video.model.Course" >
-    insert into course (id, course_name, course_descr, 
-      insert_time, update_time, subject_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{courseDescr,jdbcType=VARCHAR}, 
-      #{insertTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{subjectId,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="com.forward.video.model.Subject" >
+    insert into subject (id, subject_name)
+    values (#{id,jdbcType=INTEGER}, #{subjectName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.forward.video.model.Course" >
-    insert into course
+  <insert id="insertSelective" parameterType="com.forward.video.model.Subject" >
+    insert into subject
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="courseName != null" >
-        course_name,
-      </if>
-      <if test="courseDescr != null" >
-        course_descr,
-      </if>
-      <if test="insertTime != null" >
-        insert_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="subjectId != null" >
-        subject_id,
+      <if test="subjectName != null" >
+        subject_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="courseName != null" >
-        #{courseName,jdbcType=VARCHAR},
-      </if>
-      <if test="courseDescr != null" >
-        #{courseDescr,jdbcType=VARCHAR},
-      </if>
-      <if test="insertTime != null" >
-        #{insertTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="subjectId != null" >
-        #{subjectId,jdbcType=INTEGER},
+      <if test="subjectName != null" >
+        #{subjectName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.forward.video.model.CourseExample" resultType="java.lang.Integer" >
-    select count(*) from course
+  <select id="countByExample" parameterType="com.forward.video.model.SubjectExample" resultType="java.lang.Integer" >
+    select count(*) from subject
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update course
+    update subject
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.courseName != null" >
-        course_name = #{record.courseName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.courseDescr != null" >
-        course_descr = #{record.courseDescr,jdbcType=VARCHAR},
-      </if>
-      <if test="record.insertTime != null" >
-        insert_time = #{record.insertTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.updateTime != null" >
-        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.subjectId != null" >
-        subject_id = #{record.subjectId,jdbcType=INTEGER},
+      <if test="record.subjectName != null" >
+        subject_name = #{record.subjectName,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -185,52 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update course
+    update subject
     set id = #{record.id,jdbcType=INTEGER},
-      course_name = #{record.courseName,jdbcType=VARCHAR},
-      course_descr = #{record.courseDescr,jdbcType=VARCHAR},
-      insert_time = #{record.insertTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      subject_id = #{record.subjectId,jdbcType=INTEGER}
+      subject_name = #{record.subjectName,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.forward.video.model.Course" >
-    update course
+  <update id="updateByPrimaryKeySelective" parameterType="com.forward.video.model.Subject" >
+    update subject
     <set >
-      <if test="courseName != null" >
-        course_name = #{courseName,jdbcType=VARCHAR},
-      </if>
-      <if test="courseDescr != null" >
-        course_descr = #{courseDescr,jdbcType=VARCHAR},
-      </if>
-      <if test="insertTime != null" >
-        insert_time = #{insertTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="subjectId != null" >
-        subject_id = #{subjectId,jdbcType=INTEGER},
+      <if test="subjectName != null" >
+        subject_name = #{subjectName,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.forward.video.model.Course" >
-    update course
-    set course_name = #{courseName,jdbcType=VARCHAR},
-      course_descr = #{courseDescr,jdbcType=VARCHAR},
-      insert_time = #{insertTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      subject_id = #{subjectId,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.forward.video.model.Subject" >
+    update subject
+    set subject_name = #{subjectName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  
-  
-  
-  
-  <select id="selectCourseAllInfo" parameterType="Integer" resultMap="BaseResultMap">
-  	select c.*,subject_name from course c left join subject s on c.subject_id = s.id limit #{page},5
-  </select>
 </mapper>

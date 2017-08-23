@@ -1,16 +1,17 @@
 package com.forward.video.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.forward.video.model.KeyVO;
 import com.forward.video.model.Speaker;
 import com.forward.video.service.SpeakerService;
+import com.forward.video.util.Page;
 
 @Controller
 @RequestMapping("/speaker")
@@ -20,10 +21,13 @@ public class SpeakerController {
 	SpeakerService ss;
 	
 	@RequestMapping("/speakerManagementList.action")
-	public String speakerList(Model m,KeyVO kvo){
-		List<Speaker> list = ss.selectSpeakerAll();
-		//List<Speaker> list = ss.selectSpeakerByKey(kvo);
-		m.addAttribute("speakerList", list);
+	public String speakerList(Model m,KeyVO kvo,@RequestParam(defaultValue="1")String page){
+		int currentPage = Integer.parseInt(page);
+		@SuppressWarnings("rawtypes")
+		Page pages = ss.loadPage(kvo,currentPage);
+		m.addAttribute("kvo", kvo);
+		m.addAttribute("page", pages);
+		m.addAttribute("speakerList", pages.getRows());
 		return "/speaker/speakerManagementList";
 	}
 	

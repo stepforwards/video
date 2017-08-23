@@ -1,5 +1,6 @@
 package com.forward.video.mapper;
 
+import com.forward.video.model.KeyVO;
 import com.forward.video.model.Speaker;
 import com.forward.video.model.SpeakerExample;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface SpeakerMapper {
     int updateByPrimaryKeySelective(Speaker record);
 
     int updateByPrimaryKey(Speaker record);
+
+	List<Speaker> selectByKeylimit(KeyVO kvo);
 }

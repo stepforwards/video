@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>主讲人管理</title>
+    <title>课程管理</title>
     <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
     <script src="<c:url value="/js/jquery-1.12.4.min.js"/>"></script>
     <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
@@ -38,23 +38,13 @@
   <body>
   	<%@ include file="../nav.jsp" %>
 	<div class="container">
+	   
 		<div class="jumbotron" style="padding-left: 20px; padding-top: 1px;background-image: url(<c:url value="/img/context.jpg"/>);background-size: 100% 100%;">
-			<h2>主讲人管理列表-主讲人管理</h2>
+			<h2>课程列表-课程管理</h2>
 		</div>
 		
-		<form class="form-inline" action="<c:url value="/speaker/speakerManagementList.action"/>" method="post">
-			<a href="<c:url value="/speaker/addSpeaker.action"/>" class="btn btn-primary">添加主讲人</a>
-			<div style="float: right;">
-				<div class="form-group">
-					<label for="exampleInputName">名称</label>
-					<input type="text" name="speakerName" class="form-control" value="${kvo.speakerName }" id="exampleInputName" placeholder="主讲人名称">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPlace">职位</label>
-					<input type="text" name="speakerJob" class="form-control" value="${kvo.speakerJob }" id="exampleInputPlace" placeholder="主讲人职位">
-				</div>
-					<button type="submit" class="btn btn-primary">查询</button>
-			</div>
+		<form class="form-inline">
+			<a href="<c:url value="/course/addCourse.action"/>" class="btn btn-primary">添加课程</a>
 		</form>
 		
 		<div class="bs-example" data-example-id="hoverable-table">
@@ -62,24 +52,24 @@
 		      <thead>
 		        <tr>
 		          <th>序号</th>
-		          <th>名称</th>
-		          <th>职位</th>
-		          <th class="col-md-12">简介</th>
+		          <th class="col-md-1">标题</th>
+		          <th class="col-md-1">学科</th>
+		          <th class="col-md-10">简介</th>
 		          <th>编辑</th>
 		          <th>删除</th>
 		        </tr>
 		      </thead>
-		      <c:forEach items="${speakerList }" var="speaker" varStatus="status">
+		      <c:forEach items="${courseList }" var="course" varStatus="status">
 			      <tbody>
 			        <tr>
 			          <th scope="row">${status.count+(page.page-1)*5 }</th>
-			          <td>${speaker.speakerName }</td>
-			          <td>${speaker.speakerJob }</td>
-			          <td>${speaker.speakerDescr }</td>
-			          <td><a href="<c:url value="/speaker/editorSpeaker.action?id=${speaker.id }"/>" class="glyphicon glyphicon-edit"></a></td>
+			          <td>${course.courseName }</td>
+			          <td>${course.subjectName }</td>
+			          <td>${course.courseDescr }</td>
+			          <td><a href="<c:url value="/course/editorCourse.action?id=${course.id }" />" class="glyphicon glyphicon-edit"></a></td>
 			          <td>
 			          	<input type="hidden" id="url" value=""/>
-			          	<a onclick="delcfm('<c:url value="/speaker/deleteSpeakerById.action?id=${speaker.id }"/>')" class="glyphicon glyphicon-trash"></a>
+			          	<a href="#" onclick="delcfm('<c:url value="/course/deleteCourseById.action?id=${course.id }"/>')" class="glyphicon glyphicon-trash"></a>
 			          </td>
 			        </tr>
 			      </tbody>
@@ -87,7 +77,7 @@
 		    </table>
  		</div>
  		<div style="float: right;">
-		 		<page:page url="${pageContext.request.contextPath }/speaker/speakerManagementList.action"></page:page>
+		 	<page:page url="${pageContext.request.contextPath }/course/courseManagementList.action"></page:page>
 		</div>
  		<%@ include file="../footer.jsp" %>
   	</div>

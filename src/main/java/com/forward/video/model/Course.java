@@ -14,8 +14,26 @@ public class Course {
     private Date updateTime;
 
     private Integer subjectId;
+    
+    
+    private String subjectName;
 
-    public Integer getId() {
+    @Override
+	public String toString() {
+		return "Course [id=" + id + ", courseName=" + courseName + ", courseDescr=" + courseDescr + ", insertTime="
+				+ insertTime + ", updateTime=" + updateTime + ", subjectId=" + subjectId + ", subjectName="
+				+ subjectName + "]";
+	}
+
+	public String getSubjectName() {
+		return subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+
+	public Integer getId() {
         return id;
     }
 

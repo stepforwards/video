@@ -8,6 +8,7 @@
     <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
+    <result column="subject_name" property="subjectName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -225,4 +226,11 @@
       subject_id = #{subjectId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  
+  <select id="selectCourseAllInfo" parameterType="Integer" resultMap="BaseResultMap">
+  	select c.*,subject_name from course c left join subject s on c.subject_id = s.id limit #{page},5
+  </select>
 </mapper>

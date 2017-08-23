@@ -29,7 +29,8 @@ public class NavigationTag extends TagSupport {
      */
     private int number = 5;
     
-    @Override
+    @SuppressWarnings("rawtypes")
+	@Override
     public int doStartTag() throws JspException {
         JspWriter writer = pageContext.getOut();
         HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
@@ -112,7 +113,8 @@ public class NavigationTag extends TagSupport {
      * 为页码标签进行其他数据的拼接
      * 
      */
-    private String resolveUrl(String url, javax.servlet.jsp.PageContext pageContext) throws JspException{
+    @SuppressWarnings("rawtypes")
+	private String resolveUrl(String url, javax.servlet.jsp.PageContext pageContext) throws JspException{
     	Map params = pageContext.getRequest().getParameterMap();
     	for (Object key:params.keySet()) {
     		if ("page".equals(key) || "rows".equals(key)) continue;

@@ -240,4 +240,12 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  
+  
+  <select id="selectByKeylimit" parameterType="KeyVO" resultMap="BaseResultMap">
+  	select * from speaker where speaker_name like '%' #{speakerName} '%' and speaker_job like '%' #{speakerJob} '%' limit #{currentStrip},5
+  </select>
 </mapper>

@@ -61,7 +61,7 @@ public class VideoController {
 	}
 	
 	@RequestMapping(value="/deleteVideoByQuery.action",method=RequestMethod.GET)
-	public String deleteVideoByQuery(String[]id){
+	public String deleteVideoByQuery(String[] id){
 		vs.deleteVideoByQuery(id);
 		return "redirect:/video/videoManagementList.action";
 	}
