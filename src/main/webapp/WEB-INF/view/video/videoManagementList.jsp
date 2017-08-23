@@ -58,7 +58,8 @@
 	    			if(box[i].checked === true)
 	    				idString += "&id="+box[i].id;
 	    		}
-	    		document.location="deleteVideoByQuery.action?"+idString.substr(1);
+	    		$('#url').val("${pageContext.request.contextPath}/video/deleteVideoByQuery.action?"+idString.substr(1));
+	    		$('#deleteModal').modal();
 	 		}
     	}
     	
@@ -82,8 +83,8 @@
 			<h2>视频列表-视频管理</h2>
 		</div>
 		
-		<form class="form-inline" action="<c:url value="/video/videoManagementList.action"/>" method="post">
 			
+		<form class="form-inline" action="<c:url value="/video/videoManagementList.action"/>" method="post">
 			<a href="<c:url value="/video/addVideo.action"/>" class="btn btn-primary">添加视频</a>
 			<a href="#" class="btn btn-primary" onclick="deleteByQuery()" >批量删除<span id="deleteNum" class="badge">0</span></a>
 			<div style="float: right;">

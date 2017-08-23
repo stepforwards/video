@@ -1,5 +1,6 @@
 package com.forward.video.service.impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class VideoServiceImpl implements VideoService {
 	
 	@Override
 	public void saveVideo(Video v) {
+		v.setInsertTime(new Date(System.currentTimeMillis()));
 		vm.insertSelective(v);
 	}
 	
@@ -39,6 +41,7 @@ public class VideoServiceImpl implements VideoService {
 
 	@Override
 	public void updateVideoById(Video v) {
+		v.setUpdateTime(new Date(System.currentTimeMillis()));
 		vm.updateByPrimaryKeySelective(v);
 	}
 
@@ -58,7 +61,6 @@ public class VideoServiceImpl implements VideoService {
 		page.setRows(vm.selectVideoListByKey(kvo));
 		page.setSize(5);
 		page.setPage(currentPage);
-		
 		return page;
 	}
 

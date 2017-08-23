@@ -1,5 +1,6 @@
 package com.forward.video.service.impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class SpeakerServiceImpl implements SpeakerService {
 
 	@Override
 	public void addSpeaker(Speaker speaker) {
+		speaker.setInsertTime(new Date(System.currentTimeMillis()));
 		sm.insertSelective(speaker);
 	}
 
@@ -40,6 +42,7 @@ public class SpeakerServiceImpl implements SpeakerService {
 
 	@Override
 	public void updateSpeakerById(Speaker speaker) {
+		speaker.setUpdateTime(new Date(System.currentTimeMillis()));
 		sm.updateByPrimaryKeySelective(speaker);
 	}
 

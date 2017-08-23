@@ -1,5 +1,6 @@
 package com.forward.video.service.impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public void addCourse(Course course) {
+		course.setInsertTime(new Date(System.currentTimeMillis()));
 		cm.insertSelective(course);
 	}
 
@@ -50,6 +52,7 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public void updateCourseById(Course course) {
+		course.setUpdateTime(new Date(System.currentTimeMillis()));
 		cm.updateByPrimaryKeySelective(course);
 	}
 

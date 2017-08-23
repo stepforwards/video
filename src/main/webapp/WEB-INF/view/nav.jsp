@@ -16,8 +16,9 @@
    			 text-shadow: 0 0 50px black;
    			 -moz-user-select: none
     	}
-    </style>
-<title>Insert title here</title>
+</style>
+    
+<title>导航栏</title>
 </head>
 <body>
 	<div class="container-fluid" style="background-color: #222;">
@@ -39,14 +40,14 @@
 		        <!-- Collect the nav links, forms, and other content for toggling -->
 		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="<c:url value="/video/videoManagementList.action"/>">视频管理</a></li>
-		            <li><a href="<c:url value="/speaker/speakerManagementList.action"/>">主讲人管理</a></li>
-		            <li><a href="<c:url value="/course/courseManagementList.action"/>">课程管理</a></li>
+		            <li id="videoManagement" ><a href="<c:url value="/video/videoManagementList.action"/>">视频管理</a></li>
+		            <li id="speakerManagement" ><a href="<c:url value="/speaker/speakerManagementList.action"/>">主讲人管理</a></li>
+		            <li id="courseManagement" ><a href="<c:url value="/course/courseManagementList.action"/>">课程管理</a></li>
 		            <li><a href="#">统计分析</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		          	<li><a href="#">admin</a></li>
-		          	<li><a href="login.html" class="glyphicon glyphicon-log-out"></a></li>	
+		          	<li><a href="login.html" class="glyphicon glyphicon-log-out"></a></li>
 		          </ul>
 		        </div><!-- /.navbar-collapse -->
 		      </div><!-- /.container-fluid -->
