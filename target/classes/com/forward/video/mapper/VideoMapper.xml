@@ -15,6 +15,7 @@
     <result column="video_play_times" property="videoPlayTimes" jdbcType="INTEGER" />
     <result column="speaker_name" property="speakerName" jdbcType="VARCHAR" />
     <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="avg" property="avg" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -343,8 +344,10 @@
   	 	and c.id = #{course}
   	 </if>
 	 limit #{currentStrip},5;
-  	 
   </select>
   
+  <select id="courseStatisticalAnalysis" resultMap="BaseResultMap">
+  	SELECT avg(video_play_times) avg,course_name FROM video RIGHT JOIN course ON course_id = course.id GROUP BY course_id
+  </select>
   
 </mapper>

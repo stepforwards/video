@@ -11,7 +11,7 @@
 <link rel="icon" type="image/x-icon" href="<c:url value="/img/favicon.ico"/>" />
 <style type="text/css">
     	body{
-    		 background-color: #acacac;
+    		 background-color: white;
    			 color: black;
    			 text-shadow: 0 0 50px black;
    			 -moz-user-select: none
@@ -43,7 +43,7 @@
 		            <li id="videoManagement" ><a href="<c:url value="/video/videoManagementList.action"/>">视频管理</a></li>
 		            <li id="speakerManagement" ><a href="<c:url value="/speaker/speakerManagementList.action"/>">主讲人管理</a></li>
 		            <li id="courseManagement" ><a href="<c:url value="/course/courseManagementList.action"/>">课程管理</a></li>
-		            <li><a href="#">统计分析</a></li>
+		            <li><a href="<c:url value="/statistical/statisticalAnalysis.action"/>">统计分析</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		          	<li><a href="#">admin</a></li>

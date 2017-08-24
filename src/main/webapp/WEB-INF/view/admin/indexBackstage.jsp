@@ -10,9 +10,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>登录</title>
     <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="<c:url value="/img/favicon.ico"/>" />
     <script src="<c:url value="/js/jquery-1.12.4.min.js"/>"></script>
     <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
-    <link rel="icon" type="image/x-icon" href="<c:url value="/img/favicon.ico"/>" />
+    <script src="<c:url value="/js/jquery.validate.min.js"/>"></script>
+    <script src="<c:url value="/js/messages_zh.min.js"/>"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		$(".loginForm").validate({
+    			rules: {
+    				username: {
+        				required: true
+        			},
+        			password: {
+        				required: true
+        			}
+    			},
+    			messages: {
+    				username: {
+        				required: "用户名不能为空"
+        			},
+        			password: {
+        				required: "密码不能为空"
+        			}
+    			}
+    		});
+    	});
+    </script>
     <style type="text/css">
     	body{
     		 background-color: #acacac;
@@ -21,11 +45,10 @@
    			 -moz-user-select: none
     	}
     </style>
-    
   </head>
   <body>
   	<div class="container">
-	  	<form action="<c:url value="/admin/login.action"/>" method="post">
+	  	<form action="<c:url value="/admin/login.action"/>" class="loginForm" method="post">
 			<div class="form-group" style="width: 309px;margin: 300px auto;">
 				<div style="background-image: url(${pageContext.request.contextPath }/img/logo.png); width: 309px; height: 76px ; margin: 10px 0;"></div>
 				<input type="text" name="username" class="form-control" placeholder="Username" style="margin: 10px 0;">

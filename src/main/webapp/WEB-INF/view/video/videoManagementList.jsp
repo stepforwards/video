@@ -23,32 +23,33 @@
     	}
     </style>
     <script>
-    	var num=0;
+    	
+    	var num = 0;
     	function checkAll(v){
+    		
     		var box = document.getElementsByName("checkbox");
     		for(var i = 0;i < box.length;i++ ){
     			box[i].checked = v;
     		}
     		if(v){
     			num = box.length;
-	    		document.getElementById("deleteNum").innerHTML=num;
+    			$("#deleteNum").text(num);
     		}else{
     			num = 0;
-    			document.getElementById("deleteNum").innerHTML=0;
+    			$("#deleteNum").text(num);
     		}
-    		
     	}
     	function check(v){
     		if(v){
     			num++;
     			if(num == document.getElementsByName("checkbox").length){
-    				document.getElementById("checkAll").checked=true;
+    				$("#checkAll")[0].checked=true;
     			}
     		}else{
     			num--;
-    			document.getElementById("checkAll").checked=false;
+    			$("#checkAll")[0].checked=false;
     		}
-    		document.getElementById("deleteNum").innerHTML=num;
+    		$("#deleteNum").text(num);
     	}
     	function deleteByQuery(){
 	  		if(num != 0){
