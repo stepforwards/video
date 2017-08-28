@@ -5,16 +5,18 @@
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
+    <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="<c:url value="/img/favicon.ico"/>" />
+    <script src="<c:url value="/js/jquery-1.12.4.min.js"/>"></script>
+    <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
     <script type="text/javascript">
-    	var courseNames = [];
-    	var courseplays = [];
-    	$(function(){
-    		
-    	});
+    	
     </script>
 </head>
 <body>
-	<%@ include file="../nav.jsp" %>
+	<jsp:include page="/WEB-INF/view/nav.jsp">
+	  	<jsp:param value="statistical" name="fromJsp"/>
+  	</jsp:include>
 	<div class="container">
 	<!--巨幕-->
 		<div class="jumbotron" style="padding-left: 20px; padding-top: 1px; background-image: url(<c:url value="/img/context.jpg"/>);background-size: 100% 100%;">
@@ -23,6 +25,7 @@
 	
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="height:600px;"></div>
+    
     <!-- ECharts单文件引入 -->
     <script src="<c:url value="/js/echarts.min.js"/>"></script>
     <script type="text/javascript">
@@ -48,16 +51,13 @@
                     xAxis : [
                         {
                             type : 'category',
-                            data : ["${courseNames}"]
+                           	data : ["${courseNames}"]
                         }
                     ],
                     yAxis : [
                         {	
                             type : 'value',
                             "name": ['平均播放次数(times)'],
-                            nameTextStyle: {
-                            	
-                            }
                         }
                     ],
                     series : [
@@ -68,9 +68,9 @@
                         }
                     ]
                 };
-                
                 // 为echarts对象加载数据 
                 myChart.setOption(option); 
+              
     </script>
     </div>
 	<%@ include file="../footer.jsp" %>

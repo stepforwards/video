@@ -22,21 +22,45 @@
    			 -moz-user-select: none
     	}
     </style>
-    <script type="text/javascript">
-	    function delcfm(url) {
-			$('#url').val(url); //给会话中的隐藏属性URL赋值
-			$('#deleteModal').modal();
-		}
+    <script>
+	    	function delcfm(id) {
+				/* $('#url').val(url); //给会话中的隐藏属性URL赋值
+				$('#deleteModal').modal(); */
+			  		$.confirm({
+						title: '警告',
+						content: '确认删除么?',
+						type: 'green',
+						buttons: {
+							ok: {
+								text: "确认",
+								btnClass: 'btn-primary',
+								action: function() {
+									//location.href = url;
+									$.ajax({
+										type:"post",
+										url:"${pageContext.request.contextPath}/speaker/deleteSpeakerByIdAjax.action",
+										data:{"id":id},
+										dataType:"text",
+										success:function(message){
+											location.reload();
+										}
+									});
+								}
+							},
+							cancel: function() {
+								
+							}
+						}
+					});
+			}
 	
-		function urlSubmit() {
-			var url = $.trim($("#url").val()); //获取会话中的隐藏属性URL
-			window.location.href = url;
-		}
     </script>
   </head>
   
   <body>
-  	<%@ include file="../nav.jsp" %>
+  	<jsp:include page="/WEB-INF/view/nav.jsp">
+	  	<jsp:param value="speaker" name="fromJsp"/>
+  	</jsp:include>
 	<div class="container">
 		<div class="jumbotron" style="padding-left: 20px; padding-top: 1px;background-image: url(<c:url value="/img/context.jpg"/>);background-size: 100% 100%;">
 			<h2>主讲人管理列表-主讲人管理</h2>
@@ -79,7 +103,7 @@
 			          <td><a href="<c:url value="/speaker/editorSpeaker.action?id=${speaker.id }"/>" class="glyphicon glyphicon-edit"></a></td>
 			          <td>
 			          	<input type="hidden" id="url" value=""/>
-			          	<a onclick="delcfm('<c:url value="/speaker/deleteSpeakerById.action?id=${speaker.id }"/>')" class="glyphicon glyphicon-trash"></a>
+			          	<a onclick="delcfm(${speaker.id })" class="glyphicon glyphicon-trash"></a>
 			          </td>
 			        </tr>
 			      </tbody>
@@ -91,6 +115,7 @@
 		</div>
  		<%@ include file="../footer.jsp" %>
   	</div>
-  	<%@ include file="../modalBox.jsp" %>
   </body>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/jquery-confirm.min.css"/>"/>
+    <script type="text/javascript" src="<c:url value="/js/jquery-confirm.min.js" />" ></script>
 </html>

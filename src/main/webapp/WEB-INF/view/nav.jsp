@@ -40,10 +40,10 @@
 		        <!-- Collect the nav links, forms, and other content for toggling -->
 		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
 		          <ul class="nav navbar-nav">
-		            <li id="videoManagement" ><a href="<c:url value="/video/videoManagementList.action"/>">视频管理</a></li>
-		            <li id="speakerManagement" ><a href="<c:url value="/speaker/speakerManagementList.action"/>">主讲人管理</a></li>
-		            <li id="courseManagement" ><a href="<c:url value="/course/courseManagementList.action"/>">课程管理</a></li>
-		            <li><a href="<c:url value="/statistical/statisticalAnalysis.action"/>">统计分析</a></li>
+		            <li ${param.fromJsp eq "video" ? "class='active'" : "" }><a href="<c:url value="/video/videoManagementList.action"/>">视频管理</a></li>
+		            <li ${param.fromJsp eq "speaker" ? "class='active'" : "" }><a href="<c:url value="/speaker/speakerManagementList.action"/>">主讲人管理</a></li>
+		            <li ${param.fromJsp eq "course" ? "class='active'" : "" }><a href="<c:url value="/course/courseManagementList.action"/>">课程管理</a></li>
+		            <li ${param.fromJsp eq "statistical" ? "class='active'" : "" }><a href="<c:url value="/statistical/statisticalAnalysis.action"/>">统计分析</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		          	<li><a href="#">admin</a></li>

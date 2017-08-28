@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<!--引入模板-->
@@ -8,10 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>主讲人管理</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
+    <script src="<c:url value="/js/jquery-1.12.4.min.js"/>"></script>
+    <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+    <link rel="icon" type="image/x-icon" href="<c:url value="/img/favicon.ico"/>" />
     <style type="text/css">
     	body{
     		 background-color: #acacac;
@@ -21,11 +22,12 @@
     	}
     </style>
   </head>
-  
   <body>
-  	<%@ include file="../nav.jsp" %>
+  	<jsp:include page="/WEB-INF/view/nav.jsp">
+	  	<jsp:param value="speaker" name="fromJsp"/>
+  	</jsp:include>
 	<div class="container">
-		<div class="jumbotron" style="padding-left: 20px; padding-top: 1px;background-image: url(<c:url value="/img/context.jpg"/>);background-size: 100% 100%;">
+		<div class="jumbotron" style="padding-left: 20px; padding-top: 1px;background-image: url(<c:url value="/img/context.jpg"/>); background-size: 100% 100%;">
 			<h2>添加主讲人-主讲人管理</h2>
 		</div>
 		

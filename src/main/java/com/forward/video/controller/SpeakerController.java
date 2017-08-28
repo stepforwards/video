@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.forward.video.model.KeyVO;
 import com.forward.video.model.Speaker;
@@ -46,6 +47,13 @@ public class SpeakerController {
 	public String deleteSpeakerById(String id){
 		ss.deleteSpeakerById(id);
 		return "redirect:/speaker/speakerManagementList.action";
+	}
+	
+	@RequestMapping(value="/deleteSpeakerByIdAjax.action",method=RequestMethod.POST)
+	@ResponseBody
+	public String deleteSpeakerByIdAjax(String id){
+		ss.deleteSpeakerById(id);
+		return "true";
 	}
 	
 	@RequestMapping(value="/editorSpeaker.action",method=RequestMethod.GET)

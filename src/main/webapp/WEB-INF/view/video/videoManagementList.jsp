@@ -62,7 +62,7 @@
 	    		$('#url').val("${pageContext.request.contextPath}/video/deleteVideoByQuery.action?"+idString.substr(1));
 	    		$('#deleteModal').modal();
 	 		}
-    	}
+    	} 
     	
     	function delcfm(url) {
 			$('#url').val(url); //给会话中的隐藏属性URL赋值
@@ -77,7 +77,10 @@
   </head>
   
   <body>
-  	<%@ include file="../nav.jsp" %>
+  	<jsp:include page="/WEB-INF/view/nav.jsp">
+	  	<jsp:param value="video" name="fromJsp"/>
+  	</jsp:include>
+  	
 	<div class="container">
 		<!--巨幕-->
 		<div class="jumbotron" style="padding-left: 20px; padding-top: 1px; background-image: url(<c:url value="/img/context.jpg"/>);background-size: 100% 100%;">
