@@ -17,7 +17,6 @@ public class AdminController {
 	@Autowired
 	AdminService as;
 	
-	
 	@RequestMapping(value="/indexBackstage.action",method=RequestMethod.GET)
 	public String indexBackstage(){
 		return "/admin/indexBackstage";
@@ -32,6 +31,13 @@ public class AdminController {
 			return "forward:/video/videoManagementList.action";
 		}
 		return "redirect:/index.jsp";
+	}
+	
+	/*admin退出*/
+	@RequestMapping(value="/logout.action",method=RequestMethod.GET)
+	public String logout(HttpSession session){
+		session.invalidate();
+		return "/admin/indexBackstage";
 	}
 	
 }

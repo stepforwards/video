@@ -1,6 +1,7 @@
 package com.forward.video.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Course {
     private Integer id;
@@ -17,12 +18,23 @@ public class Course {
     
     
     private String subjectName;
+    
+    private List<Video> videoList;
+    
+    
+    public List<Video> getVideoList() {
+		return videoList;
+	}
 
-    @Override
+	public void setVideoList(List<Video> videoList) {
+		this.videoList = videoList;
+	}
+
+	@Override
 	public String toString() {
 		return "Course [id=" + id + ", courseName=" + courseName + ", courseDescr=" + courseDescr + ", insertTime="
 				+ insertTime + ", updateTime=" + updateTime + ", subjectId=" + subjectId + ", subjectName="
-				+ subjectName + "]";
+				+ subjectName + ", videoList=" + videoList + "]";
 	}
 
 	public String getSubjectName() {

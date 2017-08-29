@@ -7,4 +7,6 @@ import com.forward.video.model.Subject;
 public interface SubjectService {
 	
 	List<Subject> selectSubjectAll();
+
+	Subject selectSubjectById(String subjectId);
 }

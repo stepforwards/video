@@ -350,4 +350,13 @@
   	SELECT avg(video_play_times) avg,course_name FROM video RIGHT JOIN course ON course_id = course.id GROUP BY course_id
   </select>
   
+  <select id="selectVideoByIdAllInfo" parameterType="String" resultMap="BaseResultMap">
+  	 select v.*,speaker_name,course_name from video v left join speaker s on v.speaker_id = s.id
+  	 left join course c on v.course_id = c.id where v.id = #{videoId}
+  </select>
+  
+  <select id="selectVideoByCourseIds" parameterType="Integer" resultMap="BaseResultMap">
+  	select v.*,speaker_name from video v,speaker s WHERE v.speaker_id = s.id and course_id = #{courseId}
+  </select>
+  
 </mapper>

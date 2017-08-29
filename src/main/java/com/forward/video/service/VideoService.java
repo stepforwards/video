@@ -22,4 +22,14 @@ public interface VideoService {
 
 	@SuppressWarnings("rawtypes")
 	Page loadPage(KeyVO kvo, int currentPage);
+
+	List<Video> selectVideobyCourseIds(Integer[] courseIds);
+
+	void updateVideoStateById(String videoId);
+
+	List<Video> selectVideobyCourseId(Integer integer);
+
+	Video selectVideoByIdAllInfo(String videoId);
+
+	List<Video> selectVideobyCourseIds(Integer courseId);
 }

@@ -34,4 +34,8 @@ public interface VideoMapper {
 	int selectVideoListByKeyCount(KeyVO kvo);
 
 	List<Video> courseStatisticalAnalysis();
+
+	Video selectVideoByIdAllInfo(String videoId);
+
+	List<Video> selectVideoByCourseIds(Integer courseId);
 }

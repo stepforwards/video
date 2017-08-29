@@ -36,6 +36,8 @@
 		<commons-net.version>3.3</commons-net.version>
 		<!-- 文件上传组件 -->
 		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<!-- 邮件系统 -->
+		<javax.mail.version>1.4.7</javax.mail.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -158,6 +160,12 @@
 				<artifactId>commons-fileupload</artifactId>
 				<version>${commons-fileupload.version}</version>
 			</dependency>
+			<!-- 邮件系统 -->
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>${javax.mail.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<!-- 依赖管理 -->
@@ -255,6 +263,11 @@
 			<dependency>
 				<groupId>commons-fileupload</groupId>
 				<artifactId>commons-fileupload</artifactId>
+			</dependency>
+			<!-- 邮件系统 -->
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
 			</dependency>
 	</dependencies>
 		<build>

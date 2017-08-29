@@ -19,4 +19,6 @@ public interface CourseService {
 	Course selectCourseById(String id);
 
 	void updateCourseById(Course course);
+
+	List<Course> selectCourseBySubjectId(String subjectId);
 }

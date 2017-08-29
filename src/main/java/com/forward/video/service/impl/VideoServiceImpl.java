@@ -1,6 +1,7 @@
 package com.forward.video.service.impl;
 
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.forward.video.mapper.VideoMapper;
 import com.forward.video.model.KeyVO;
 import com.forward.video.model.Video;
+import com.forward.video.model.VideoExample;
 import com.forward.video.service.VideoService;
 import com.forward.video.util.Page;
 
@@ -62,6 +64,39 @@ public class VideoServiceImpl implements VideoService {
 		page.setSize(5);
 		page.setPage(currentPage);
 		return page;
+	}
+
+	@Override
+	public List<Video> selectVideobyCourseIds(Integer[] courseIds) {
+		List<Integer> asList = Arrays.asList(courseIds);
+		VideoExample example = new VideoExample();
+		example.createCriteria().andCourseIdIn(asList);
+		return vm.selectByExample(example);
+	}
+
+	@Override
+	public void updateVideoStateById(String videoId) {
+		Video video = vm.selectByPrimaryKey(Integer.parseInt(videoId));
+		video.setVideoPlayTimes(video.getVideoPlayTimes()+1);
+		vm.updateByPrimaryKeySelective(video);
+		
+	}
+
+	@Override
+	public List<Video> selectVideobyCourseId(Integer integer) {
+		VideoExample example = new VideoExample();
+		example.createCriteria().andCourseIdEqualTo(integer);
+		return vm.selectByExample(example);
+	}
+
+	@Override
+	public Video selectVideoByIdAllInfo(String videoId) {
+		return vm.selectVideoByIdAllInfo(videoId);
+	}
+
+	@Override
+	public List<Video> selectVideobyCourseIds(Integer courseId) {
+		return vm.selectVideoByCourseIds(courseId);
 	}
 
 }

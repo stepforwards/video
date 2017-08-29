@@ -49,7 +49,7 @@ public class SpeakerController {
 		return "redirect:/speaker/speakerManagementList.action";
 	}
 	
-	@RequestMapping(value="/deleteSpeakerByIdAjax.action",method=RequestMethod.POST)
+	@RequestMapping(value="/deleteSpeakerByIdAjax.action",method=RequestMethod.GET)
 	@ResponseBody
 	public String deleteSpeakerByIdAjax(String id){
 		ss.deleteSpeakerById(id);

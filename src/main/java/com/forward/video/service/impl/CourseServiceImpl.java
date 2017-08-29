@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.forward.video.mapper.CourseMapper;
 import com.forward.video.model.Course;
+import com.forward.video.model.CourseExample;
 import com.forward.video.service.CourseService;
 import com.forward.video.util.Page;
 
@@ -54,6 +55,13 @@ public class CourseServiceImpl implements CourseService {
 	public void updateCourseById(Course course) {
 		course.setUpdateTime(new Date(System.currentTimeMillis()));
 		cm.updateByPrimaryKeySelective(course);
+	}
+
+	@Override
+	public List<Course> selectCourseBySubjectId(String subjectId) {
+		CourseExample example = new CourseExample();
+		example.createCriteria().andSubjectIdEqualTo(Integer.parseInt(subjectId));
+		return cm.selectByExample(example);
 	}
 
 }

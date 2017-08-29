@@ -24,20 +24,17 @@
     </style>
     <script>
 	    	function delcfm(id) {
-				/* $('#url').val(url); //给会话中的隐藏属性URL赋值
-				$('#deleteModal').modal(); */
 			  		$.confirm({
 						title: '警告',
 						content: '确认删除么?',
-						type: 'green',
+						type: 'red',
 						buttons: {
 							ok: {
 								text: "确认",
 								btnClass: 'btn-primary',
 								action: function() {
-									//location.href = url;
 									$.ajax({
-										type:"post",
+										type:"get",
 										url:"${pageContext.request.contextPath}/speaker/deleteSpeakerByIdAjax.action",
 										data:{"id":id},
 										dataType:"text",

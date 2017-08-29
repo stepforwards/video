@@ -26,7 +26,7 @@
   <body>
   	<div class="container">
 			<div class="form-group" style="width: 309px;margin: 400px auto;">
-				<a class="btn btn-default btn-lg" style="padding: 55px;" href="#">前台</a>
+				<a class="btn btn-default btn-lg" style="padding: 55px;" href="<c:url value="/front/indexFront.action"/>">前台</a>
 				<a class="btn btn-default btn-lg" style="padding: 55px;" href="<c:url value="/admin/indexBackstage.action"/>">后台</a>
 			</div>
   	</div>

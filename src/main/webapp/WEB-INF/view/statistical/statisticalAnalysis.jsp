@@ -70,7 +70,6 @@
                 };
                 // 为echarts对象加载数据 
                 myChart.setOption(option); 
-              
     </script>
     </div>
 	<%@ include file="../footer.jsp" %>

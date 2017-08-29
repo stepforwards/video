@@ -47,7 +47,7 @@
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		          	<li><a href="#">admin</a></li>
-		          	<li><a href="login.html" class="glyphicon glyphicon-log-out"></a></li>
+		          	<li><a href="<c:url value="/"/>" class="glyphicon glyphicon-log-out"></a></li>
 		          </ul>
 		        </div><!-- /.navbar-collapse -->
 		      </div><!-- /.container-fluid -->
